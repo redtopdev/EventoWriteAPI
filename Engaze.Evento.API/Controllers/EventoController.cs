@@ -44,12 +44,6 @@ namespace Engaze.Evento.API.Controllers
             await commandDispatcher.Dispatch(new DeleteEvento(eventoId));
             return new StatusCodeResult(StatusCodes.Status202Accepted);
         }
-
-        [HttpPut(Routes.EventoParticipants)]
-        public async Task<IActionResult> UpdateParticipantListAsync([FromRoute]Guid eventoId, ICollection<Guid> participants)
-        {
-            await commandDispatcher.Dispatch(new UpdateParticipantList(eventoId, participants));
-            return new StatusCodeResult(StatusCodes.Status204NoContent);
-        }
+        
     }
 }

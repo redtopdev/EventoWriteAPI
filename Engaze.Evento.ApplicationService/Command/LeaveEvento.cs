@@ -6,10 +6,10 @@ namespace Engaze.Evento.ApplicationService.Command
 {
     public class LeaveEvento : BaseCommand
     {
-        public LeaveEvento(Guid eventoId, Guid requesterId) : base(eventoId)
+        public LeaveEvento(Guid eventoId, Guid participantId) : base(eventoId)
         {
-            this.RequesterId = requesterId;
+            this.ParticipantId = participantId;
         }
-        public Guid RequesterId { get; private set; }
+        public Guid ParticipantId { get; private set; }
     }
 }

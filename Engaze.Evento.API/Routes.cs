@@ -12,9 +12,11 @@ namespace Engaze.Evento.API
 
         public const string EndEvento = "event/{eventId}/end";
 
-        public const string ExtendEvento = "event/{id}/extend/{endTime}";
+        public const string ExtendEvento = "event/{eventId}/extend/{endTime}";
 
-        public const string EventoParticipants = "event/{id}/participants";
+        public const string EventoParticipants = "event/{eventId}/participants";
+
+        public const string EventoParticipantState = "event/{eventId}/participant/{participantId}/state/{state}";       
 
     }
 }
