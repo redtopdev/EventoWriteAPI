@@ -1,0 +1,33 @@
+﻿
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace Engaze.EventSourcing.Core
+{
+    public class CommandDispatcher : ICommandDispatcher
+    {
+        private readonly Dictionary<Type, Func<ICommand, Task>> handlers = new Dictionary<Type, Func<ICommand, Task>>();
+        public void Register<TAggregate>(CommandHandler<TAggregate> handler) where TAggregate : IEventSourcingAggregate
+        {
+            var type = typeof(TAggregate);
+            if (handlers.ContainsKey(type))
+            {
+                throw new InvalidOperationException(string.Format("Handler exists for type {0}.", type));
+            }
+
+            handlers[type] = command => { return handler.Handle((BaseCommand)command); };
+        }
+
+        public async Task Dispatch(ICommand command)
+        {
+            var type = command.GetType();
+            if (!handlers.ContainsKey(type))
+            {
+                return;
+            }
+            var handler = handlers[type];
+            await handler(command);
+        }
+    }
+}
