@@ -12,11 +12,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.0.2105168" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
-
+ 
   <ItemGroup>
-    <ProjectReference Include="..\Engaze.Event.ApplicationService\Engaze.Evento.ApplicationService.csproj" />
-    <ProjectReference Include="..\Engaze.Event.Persistance\Engaze.Evento.Persistance.csproj" />
-    <ProjectReference Include="..\Event\Engaze.Evento.Domain.csproj" />
+    <ProjectReference Include="..\Engaze.Evento.ApplicationService\Engaze.Evento.ApplicationService.csproj" />
+    <ProjectReference Include="..\Engaze.Evento.Domain\Engaze.Evento.Domain.csproj" />
+    <ProjectReference Include="..\Engaze.Evento.Persistance\Engaze.Evento.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

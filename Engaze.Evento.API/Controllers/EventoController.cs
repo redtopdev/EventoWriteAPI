@@ -44,8 +44,5 @@ namespace Engaze.Evento.API.Controllers
             await commandDispatcher.Dispatch(new UpdateParticipantList(eventoId, participants));
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
-
-
-
     }
 }

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engaze.Evento.Domain", "Event\Engaze.Evento.Domain.csproj", "{7EC5AD05-114B-46D0-89B5-5F8B9E207476}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engaze.Evento.Domain", "Engaze.Evento.Domain\Engaze.Evento.Domain.csproj", "{7EC5AD05-114B-46D0-89B5-5F8B9E207476}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engaze.Evento.ApplicationService", "Engaze.Event.ApplicationService\Engaze.Evento.ApplicationService.csproj", "{EE00CF14-C8B5-4149-9DCB-DE2DADAE10D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engaze.Evento.ApplicationService", "Engaze.Evento.ApplicationService\Engaze.Evento.ApplicationService.csproj", "{EE00CF14-C8B5-4149-9DCB-DE2DADAE10D6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engaze.Evento.Persistance", "Engaze.Event.Persistance\Engaze.Evento.Persistance.csproj", "{11F67D66-77F8-4C6E-A6D9-60032CFA42D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engaze.Evento.Persistance", "Engaze.Evento.Persistance\Engaze.Evento.Persistance.csproj", "{11F67D66-77F8-4C6E-A6D9-60032CFA42D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engaze.Evento.API", "Engaze.Event.API\Engaze.Evento.API.csproj", "{C0FBDC59-2A3E-4D9D-9469-44F34E60016F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engaze.Evento.API", "Engaze.Evento.API\Engaze.Evento.API.csproj", "{C0FBDC59-2A3E-4D9D-9469-44F34E60016F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engaze.Evento.Contract", "Engaze.Evento.Contract\Engaze.Evento.Contract.csproj", "{D994DD09-D156-4C6F-B925-F61F38448361}"
 EndProject
