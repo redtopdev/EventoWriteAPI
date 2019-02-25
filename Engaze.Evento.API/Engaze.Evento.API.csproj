@@ -15,8 +15,6 @@
  
   <ItemGroup>
     <ProjectReference Include="..\Engaze.Evento.ApplicationService\Engaze.Evento.ApplicationService.csproj" />
-    <ProjectReference Include="..\Engaze.Evento.Domain\Engaze.Evento.Domain.csproj" />
-    <ProjectReference Include="..\Engaze.Evento.Persistance\Engaze.Evento.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

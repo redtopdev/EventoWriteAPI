@@ -17,6 +17,13 @@ namespace Engaze.Evento.API.Controllers
 
         }
 
+        [HttpPost(Routes.Evento)]
+        public async Task<IActionResult> CreateEventAsync([FromBody]EventoContract evento)
+        {
+            await commandDispatcher.Dispatch(new CreateEvento(Guid.NewGuid(), evento));
+            return new StatusCodeResult(StatusCodes.Status201Created);
+        }
+
         [HttpPut(Routes.EndEvento)]
         public async Task<IActionResult> EndEventAsync([FromRoute]Guid eventoId)
         {
