@@ -6,6 +6,6 @@ namespace Engaze.EventSourcing.Core
     public interface ICommandDispatcher
     {
         void Register<TAggregate>(CommandHandler<TAggregate> handler) where TAggregate : IEventSourcingAggregate;
-        Task Dispatch(ICommand command);
+        Task Dispatch<TAggregate>(ICommand command) where TAggregate : IEventSourcingAggregate;
     }
 }

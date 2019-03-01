@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Engaze.Evento.Contract;
 using Engaze.EventSourcing.Core;
 
@@ -18,7 +19,8 @@ namespace Engaze.Evento.Domain.Event
             this.InitiatorId = eventoContract.InitiatorId;
             this.StartTime = eventoContract.StartTime;
             this.EndTime = eventoContract.EndTime;
-            this.Participants = eventoContract.Participnats;
+            this.Participants = new List<ParticipantContract>();
+            eventoContract.Participnats.ToList().ForEach(participant => this.Participants.Add(new ParticipantContract(participant, EventAcceptanceState.Pending)));
             this.Destination = eventoContract.Destination;
 
         }
@@ -39,10 +41,9 @@ namespace Engaze.Evento.Domain.Event
 
         public LocationContract Destination { get; set; }
 
-        public IEnumerable<Guid> Participants { get; set; }
+        public List<ParticipantContract> Participants { get; set; }
 
         public RecurrenceContract Recurrence { get; set; }
-
 
     }
 }

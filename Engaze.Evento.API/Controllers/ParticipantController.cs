@@ -21,7 +21,7 @@ namespace Engaze.Evento.API.Controllers
         [HttpPut(Routes.EventoParticipants)]
         public async Task<IActionResult> UpdateParticipantListAsync([FromRoute]Guid eventoId, ICollection<Guid> participants)
         {
-            await commandDispatcher.Dispatch(new UpdateParticipantList(eventoId, participants));
+            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new UpdateParticipantList(eventoId, participants));
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
@@ -29,7 +29,7 @@ namespace Engaze.Evento.API.Controllers
         [HttpPut(Routes.LeaveEvento)]
         public async Task<IActionResult> LeaveEvent([FromRoute]Guid eventoId, [FromRoute]Guid participantId)
         {
-            await commandDispatcher.Dispatch(new LeaveEvento(eventoId, participantId));
+            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new LeaveEvento(eventoId, participantId));
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
@@ -37,7 +37,7 @@ namespace Engaze.Evento.API.Controllers
         [HttpPut(Routes.EventoParticipantState)]
         public async Task<IActionResult> UpdateParticipantState([FromRoute]Guid eventoId, [FromRoute]Guid participantId, [FromRoute]EventAcceptanceState acceptanceState)
         {
-            await commandDispatcher.Dispatch(new UpdateParticipantState(eventoId, participantId, acceptanceState));
+            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new UpdateParticipantState(eventoId, participantId, acceptanceState));
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
     }

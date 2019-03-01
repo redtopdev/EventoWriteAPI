@@ -19,9 +19,9 @@ namespace Engaze.EventSourcing.Core
             handlers[type] = command => { return handler.Handle((BaseCommand)command); };
         }
 
-        public async Task Dispatch(ICommand command)
+        public async Task Dispatch<TAggregate>(ICommand command) where TAggregate : IEventSourcingAggregate
         {
-            var type = command.GetType();
+            var type = typeof(TAggregate);
             if (!handlers.ContainsKey(type))
             {
                 return;

@@ -59,7 +59,7 @@ namespace Engaze.Evento.Domain.Entity
 
         private void when(ParticipantsListUpdated e)
         {
-            this.ParticipantList.ToList().RemoveAll(participant => !e.ParticipantList.Contains(participant.UserId));           
+            this.ParticipantList.ToList().RemoveAll(participant => !e.ParticipantList.Contains(participant.UserId));
             e.ParticipantList.ToList().Except(ParticipantList.Select(p => p.UserId)).ToList()
                 .ForEach(p => this.ParticipantList.Add(new Participant(p, EventAcceptanceState.Pending)));
             this.Id = e.AggregateId;
@@ -76,9 +76,8 @@ namespace Engaze.Evento.Domain.Entity
             this.EndTime = e.EndTime;
             this.EventState = e.EventState;
             this.EventType = e.EventType;
-            var participantList = new List<Participant>();
-            e.Participants.ToList().ForEach(participant => participantList.Add(new Participant(participant, EventAcceptanceState.Pending)));
-            this.ParticipantList = participantList;
+            this.ParticipantList = new List<Participant>();
+            e.Participants.ToList().ForEach(participant => this.ParticipantList.Add(new Participant(participant.UserId, participant.AcceptanceState)));
             this.Destination = new Location()
             {
                 Address = e.Destination.Address,
@@ -86,15 +85,18 @@ namespace Engaze.Evento.Domain.Entity
                 Latitude = e.Destination.Latitude,
                 Longitude = e.Destination.Longitude
             };
-            this.EventoRecurrence = new Recurrence()
+            if (e.Recurrence != null)
             {
-                ActualStartTime = e.Recurrence.ActualStartTime,
-                Count = e.Recurrence.Count,
-                DaysOfWeek = e.Recurrence.DaysOfWeek,
-                Frequency = e.Recurrence.Frequency,
-                FrequencyType = e.Recurrence.FrequencyType,
-                Remaining = e.Recurrence.Remaining
-            };
+                this.EventoRecurrence = new Recurrence()
+                {
+                    ActualStartTime = e.Recurrence.ActualStartTime,
+                    Count = e.Recurrence.Count,
+                    DaysOfWeek = e.Recurrence.DaysOfWeek,
+                    Frequency = e.Recurrence.Frequency,
+                    FrequencyType = e.Recurrence.FrequencyType,
+                    Remaining = e.Recurrence.Remaining
+                };
+            }
         }
 
 
