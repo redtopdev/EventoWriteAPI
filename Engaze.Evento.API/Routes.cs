@@ -8,7 +8,7 @@ namespace Engaze.Evento.API
 
         public const string DeleteEvento = "event/{eventId}";
 
-        public const string LeaveEvento = "event/{eventId}/participnat/{participantId}/leave";
+        public const string LeaveEvento = "event/{eventId}/participant/{participantId}/leave";
 
         public const string EndEvento = "event/{eventId}/end";
 

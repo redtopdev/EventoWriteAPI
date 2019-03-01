@@ -24,6 +24,9 @@ namespace Engaze.Evento.Domain.Entity
             Register<EventoEnded>(when);
             Register<ParticipantsListUpdated>(when);
             Register<EventoDeleted>(when);
+            Register<EventoExtended>(when);
+            Register<ParticipantLeft>(when);
+            Register<ParticipantStateUpdated>(when);
         }
 
         public void DeleteEvent()
@@ -38,15 +41,51 @@ namespace Engaze.Evento.Domain.Entity
             base.RaiseEvent(@event);
         }
 
+        public void ExtendEvento(DateTime extendedTime)
+        {
+            var @event = new EventoExtended(Id, extendedTime);
+            base.RaiseEvent(@event);
+        }
+
+        public void LeaveEvento(Guid participantId)
+        {
+            var @event = new ParticipantLeft(Id, participantId);
+            base.RaiseEvent(@event);
+        }
+
         public void UpdateParticipantList(ICollection<Guid> participantList)
         {
             var @event = new ParticipantsListUpdated(Id, participantList);
             base.RaiseEvent(@event);
         }
 
+        public void UpdateParticipantState(Guid participantId, EventAcceptanceState newState)
+        {
+            var @event = new ParticipantStateUpdated(Id, participantId, newState);
+            base.RaiseEvent(@event);
+        }
+
 
         //domain event handler
         private void when(EventoEnded e)
+        {
+            this.EndTime = e.EndTime;
+            this.Id = e.AggregateId;
+        }
+
+        private void when(ParticipantStateUpdated e)
+        {
+            this.ParticipantList.Where(p => p.UserId == e.ParticipantId).FirstOrDefault().UpdateAcceptanceState(e.NewState);
+            this.Id = e.AggregateId;
+        }
+
+        private void when(ParticipantLeft e)
+        {
+            this.ParticipantList.Remove(this.ParticipantList.Where(p => p.UserId == e.ParticipantId).FirstOrDefault());
+            this.Id = e.AggregateId;
+        }
+
+        private void when(EventoExtended e)
         {
             this.EndTime = e.EndTime;
             this.Id = e.AggregateId;

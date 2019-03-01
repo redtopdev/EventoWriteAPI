@@ -25,25 +25,24 @@ namespace Engaze.Evento.API.Controllers
         }
 
         [HttpPut(Routes.EndEvento)]
-        public async Task<IActionResult> EndEventAsync([FromRoute]Guid eventoId)
+        public async Task<IActionResult> EndEventAsync([FromRoute]Guid eventId)
         {
-            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new EndEvento(eventoId));
+            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new EndEvento(eventId));
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
         [HttpPut(Routes.ExtendEvento)]
-        public async Task<IActionResult> ExtendEventAsync([FromRoute]Guid eventoId, DateTime newTime)
+        public async Task<IActionResult> ExtendEventAsync([FromRoute]Guid eventId, [FromRoute]DateTime endTime)
         {
-            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new ExtendEvento(eventoId, newTime));
+            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new ExtendEvento(eventId, endTime));
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
         [HttpDelete(Routes.DeleteEvento)]
-        public async Task<IActionResult> DeleteAsync([FromRoute]Guid eventoId)
+        public async Task<IActionResult> DeleteAsync([FromRoute]Guid eventId)
         {
-            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new DeleteEvento(eventoId));
+            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new DeleteEvento(eventId));
             return new StatusCodeResult(StatusCodes.Status202Accepted);
         }
-        
     }
 }
