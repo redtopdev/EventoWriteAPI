@@ -1,5 +1,4 @@
-﻿using Engaze.Evento.Domain;
-using Engaze.EventSourcing.Core;
+﻿using Engaze.EventSourcing.Core;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,7 +18,7 @@ namespace Engaze.Evento.Persistance
             try
             {
                 var aggregate = (TAggregate)Activator.CreateInstance(typeof(TAggregate), true);
-                var events = await eventStore.ReadEventsAsync(id);
+                var events = await eventStore.ReadEventsAsync($"{typeof(TAggregate).Name}-{id.ToString()}");
                 events.ToList().ForEach(@event => aggregate.ApplyEvent(@event.DomainEvent, @event.EventNumber));
                 aggregate.ClearUncommittedEvents();
                 return aggregate;

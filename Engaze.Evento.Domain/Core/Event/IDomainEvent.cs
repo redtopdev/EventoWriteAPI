@@ -1,6 +1,7 @@
 ﻿
 namespace Engaze.EventSourcing.Core
 {
+    using Newtonsoft.Json;
     using System;
     public interface IDomainEvent
     {
@@ -19,6 +20,9 @@ namespace Engaze.EventSourcing.Core
         /// The version of the aggregate when the event has been generated
         /// </summary>
         long AggregateVersion { get; }
+
+        [JsonIgnore]
+        string AggregateIdAsString { get; }
 
     }
 }

@@ -6,6 +6,12 @@ namespace Engaze.EventSourcing.Core
 {
     public abstract class EventBase : IDomainEvent, IEquatable<EventBase>
     {
+        private const string IdAsStringPrefix = "Evento-";
+
+        public string AggregateIdAsString
+        {
+            get { return $"{IdAsStringPrefix}{AggregateId.ToString()}"; }
+        }
         protected EventBase()
         {
             EventId = Guid.NewGuid();

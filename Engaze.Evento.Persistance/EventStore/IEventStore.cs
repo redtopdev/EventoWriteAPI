@@ -9,7 +9,7 @@ namespace Engaze.Evento.Persistance
     public interface IEventStore
     {
 
-        Task<IEnumerable<EventWrapper>> ReadEventsAsync(Guid id);
+        Task<IEnumerable<EventWrapper>> ReadEventsAsync(string id);
 
 
         Task<AppendResult> AppendEventAsync(IDomainEvent @event);

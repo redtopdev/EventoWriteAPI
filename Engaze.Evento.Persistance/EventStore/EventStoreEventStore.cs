@@ -18,7 +18,7 @@ namespace Engaze.Evento.Persistance
             this.connection = connection;
         }
 
-        public async Task<IEnumerable<EventWrapper>> ReadEventsAsync(Guid id)
+        public async Task<IEnumerable<EventWrapper>> ReadEventsAsync(string id)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace Engaze.Evento.Persistance
              
                
                 var writeResult = await connection.AppendToStreamAsync(
-                    @event.AggregateId.ToString(),
+                    @event.AggregateIdAsString,
                     @event.AggregateVersion == AggregateRoot.NewAggregateVersion ? ExpectedVersion.NoStream : @event.AggregateVersion,
                     eventData);
 
