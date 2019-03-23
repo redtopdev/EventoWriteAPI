@@ -16,7 +16,7 @@ namespace Engaze.Evento.API
         {
             //var connString = config.GetValue<string>("eventstore_connstring");
             //unable to reade from appsetting or environment variables so hard coding as of now.
-            services.AddSingleton(x => EventStoreConnection.Create(new Uri("tcp://127.0.0.1:1113")));
+            services.AddSingleton(x => EventStoreConnection.Create(new Uri("tcp://event-store:1113")));
             services.AddSingleton<IEventStore, EventStoreEventStore>();
             services.AddSingleton<ICommandDispatcher, CommandDispatcher>();
             services.AddSingleton<IAggregateRespository<Domain.Entity.Evento>, AggregateRespository<Domain.Entity.Evento>>();
