@@ -54,7 +54,7 @@ namespace Engaze.Evento.API
 
             var config = new ConfigurationBuilder()
             .SetBasePath(baseRoot)
-            .AddJsonFile("appsettings.json", optional: false)
+            .AddJsonFile("appsettings.json", optional: true)
             .AddEnvironmentVariables()
             .Build();
 
