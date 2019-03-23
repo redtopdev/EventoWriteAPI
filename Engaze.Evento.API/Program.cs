@@ -42,7 +42,7 @@ namespace Engaze.Evento.API
         /// </summary>
         /// <returns>web host.</returns>
         private static IWebHost BuildWebHost(string[] args)
-        {
+        {           
             var baseRoot = Directory.GetCurrentDirectory();
             if (IsServiceMode(args))
             {
@@ -54,8 +54,8 @@ namespace Engaze.Evento.API
 
             var config = new ConfigurationBuilder()
             .SetBasePath(baseRoot)
-            .AddJsonFile("appsettings.json", optional: true)
-            .AddEnvironmentVariables("")
+            .AddJsonFile("appsettings.json", optional: false)
+            .AddEnvironmentVariables()
             .Build();
 
             var url = config["ASPNETCORE_URLS"] ?? "http://*:5000";

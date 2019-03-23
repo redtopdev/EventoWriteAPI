@@ -16,5 +16,15 @@
   <ItemGroup>
     <ProjectReference Include="..\Engaze.Evento.ApplicationService\Engaze.Evento.ApplicationService.csproj" />
   </ItemGroup>
+ 
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Properties\launchSettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
 </Project>

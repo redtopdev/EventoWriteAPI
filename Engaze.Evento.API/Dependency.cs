@@ -12,9 +12,10 @@ namespace Engaze.Evento.API
 {
     public static class Dependency
     {
-        public static IServiceCollection Configure(IServiceCollection services, IConfiguration Configuration)
+        public static IServiceCollection Configure(IServiceCollection services, IConfiguration config)
         {
-            services.AddSingleton(x => EventStoreConnection.Create(new Uri(Configuration.GetValue<string>("EVENTSTORE_CONNSTRING"))));
+            //var connString = config.GetValue<string>("eventstore_connstring");
+            services.AddSingleton(x => EventStoreConnection.Create(new Uri("tcp://127.0.0.1:1113")));
             services.AddSingleton<IEventStore, EventStoreEventStore>();
             services.AddSingleton<ICommandDispatcher, CommandDispatcher>();
             services.AddSingleton<IAggregateRespository<Domain.Entity.Evento>, AggregateRespository<Domain.Entity.Evento>>();
