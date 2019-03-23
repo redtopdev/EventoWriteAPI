@@ -11,6 +11,6 @@ namespace Engaze.Evento.API.Controllers
         public ServiceControllerBase(ICommandDispatcher commandDispatcher)
         {
             this.commandDispatcher = commandDispatcher;
-        }
+        }      
     }
 }

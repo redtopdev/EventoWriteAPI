@@ -16,7 +16,9 @@ namespace Engaze.Evento.API
 
         public const string EventoParticipants = "event/{eventId}/participants";
 
-        public const string EventoParticipantState = "event/{eventId}/participant/{participantId}/state/{state}";       
+        public const string EventoParticipantState = "event/{eventId}/participant/{participantId}/state/{state}";
+
+        public const string ServiceStatus = "event/service-status";
 
     }
 }

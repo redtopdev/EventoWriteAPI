@@ -19,7 +19,7 @@ namespace Engaze.Evento.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            Dependency.Configure(services);
+            Dependency.Configure(services, Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

@@ -4,19 +4,17 @@ using Engaze.Evento.ApplicationService.Handler;
 using Engaze.Evento.Persistance;
 using Engaze.EventSourcing.Core;
 using EventStore.ClientAPI;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Engaze.Evento.API
 {
     public static class Dependency
     {
-        public static IServiceCollection Configure(IServiceCollection services)
+        public static IServiceCollection Configure(IServiceCollection services, IConfiguration Configuration)
         {
-            services.AddSingleton(x => EventStoreConnection.Create(new Uri("tcp://127.0.0.1:1113")));
+            services.AddSingleton(x => EventStoreConnection.Create(new Uri(Configuration.GetValue<string>("EVENTSTORE_CONNSTRING"))));
             services.AddSingleton<IEventStore, EventStoreEventStore>();
             services.AddSingleton<ICommandDispatcher, CommandDispatcher>();
             services.AddSingleton<IAggregateRespository<Domain.Entity.Evento>, AggregateRespository<Domain.Entity.Evento>>();

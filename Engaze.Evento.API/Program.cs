@@ -55,12 +55,18 @@ namespace Engaze.Evento.API
             var config = new ConfigurationBuilder()
             .SetBasePath(baseRoot)
             .AddJsonFile("appsettings.json", optional: true)
-            .Build();          
+            .AddEnvironmentVariables("")
+            .Build();
+
+            var url = config["ASPNETCORE_URLS"] ?? "http://*:5000";
+            var env = config["ASPNETCORE_ENVIRONMENT"] ?? "Development";
 
             var webHostBuilder = new WebHostBuilder()
                 .UseKestrel()
+                .UseUrls(url)
+                .UseEnvironment(env)
                 .UseContentRoot(baseRoot)
-                .UseConfiguration(config);         
+                .UseConfiguration(config);
 
 
             return webHostBuilder.UseStartup<Startup>().Build();
