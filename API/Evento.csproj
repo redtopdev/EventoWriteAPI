@@ -16,7 +16,7 @@
   </ItemGroup>
  
   <ItemGroup>
-    <ProjectReference Include="..\Engaze.Evento.ApplicationService\ApplicationService.csproj" />
+    <ProjectReference Include="..\ApplicationService\ApplicationService.csproj" />
   </ItemGroup>
  
   <ItemGroup>

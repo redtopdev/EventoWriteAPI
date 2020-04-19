@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Engaze.Evento.Contract\DataContract.csproj" />
+    <ProjectReference Include="..\DataContract\DataContract.csproj" />
   </ItemGroup>
 
 </Project>
