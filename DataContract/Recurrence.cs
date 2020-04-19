@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Evento.DataContract
 {
-    public class RecurrenceContract 
+    public class Recurrence
     {
         public RecurrenceFrequency FrequencyType { get; set; }
         public int Count { get; set; }

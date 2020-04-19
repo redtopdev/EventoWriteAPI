@@ -8,7 +8,7 @@ namespace Evento.Domain.Entity
     using System.Linq;
     using global::Evento.Domain.Event;
     using global::Evento.DataContract;
-    using global::Evento.Domain.ValueObjects;
+    using Newtonsoft.Json;
 
     public class Evento : AggregateRoot
     {
@@ -110,6 +110,7 @@ namespace Evento.Domain.Entity
         {
             base.Id = e.AggregateId;
             this.InitiatorId = e.InitiatorId;
+            this.InitiatorName = e.InitiatorName;
             this.Description = e.Description;
             this.Name = e.Name;
             this.StartTime = e.StartTime;
@@ -118,7 +119,7 @@ namespace Evento.Domain.Entity
             this.EventType = e.EventType;
             this.ParticipantList = new List<Participant>();
             e.Participants.ToList().ForEach(participant => this.ParticipantList.Add(new Participant(participant.UserId, participant.AcceptanceState)));
-            this.Destination = new Location()
+            this.Destination = new ValueObjects.Location()
             {
                 Address = e.Destination.Address,
                 Name = e.Destination.Name,
@@ -127,7 +128,7 @@ namespace Evento.Domain.Entity
             };
             if (e.Recurrence != null)
             {
-                this.EventoRecurrence = new Recurrence()
+                this.EventoRecurrence = new ValueObjects.Recurrence()
                 {
                     ActualStartTime = e.Recurrence.ActualStartTime,
                     Count = e.Recurrence.Count,
@@ -137,6 +138,10 @@ namespace Evento.Domain.Entity
                     Remaining = e.Recurrence.Remaining
                 };
             }
+
+            this.Duration = JsonConvert.DeserializeObject<ValueObjects.Duration>(JsonConvert.SerializeObject(e.Duration));
+            this.Tracking = JsonConvert.DeserializeObject<ValueObjects.Duration>(JsonConvert.SerializeObject(e.Tracking));
+            this.Reminder = JsonConvert.DeserializeObject<ValueObjects.Reminder>(JsonConvert.SerializeObject(e.Reminder));
         }
 
 
@@ -148,6 +153,8 @@ namespace Evento.Domain.Entity
 
         public Guid InitiatorId { get; private set; }
 
+        public string InitiatorName { get; set; }
+
         public EventState EventState { get; private set; }
 
         public DateTime StartTime { get; private set; }
@@ -156,9 +163,15 @@ namespace Evento.Domain.Entity
 
         public ICollection<Participant> ParticipantList { get; private set; }
 
-        public Location Destination { get; private set; }
+        public ValueObjects.Location Destination { get; private set; }
 
-        public Recurrence EventoRecurrence { get; private set; }
+        public ValueObjects.Recurrence EventoRecurrence { get; private set; }
+
+        public ValueObjects.Duration Duration { get; set; }
+
+        public ValueObjects.Duration Tracking { get; set; }
+
+        public ValueObjects.Reminder Reminder { get; set; }
 
         public bool IsDeleted { get; private set; } = false;
 

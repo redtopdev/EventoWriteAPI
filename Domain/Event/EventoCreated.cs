@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Engaze.EventSourcing.Core;
 using Evento.DataContract;
+using Newtonsoft.Json;
 
 namespace Evento.Domain.Event
 {
@@ -17,33 +18,43 @@ namespace Evento.Domain.Event
             this.EventType = eventoContract.EventType;
             this.Description = eventoContract.Description;
             this.InitiatorId = eventoContract.InitiatorId;
+            this.InitiatorName = eventoContract.InitiatorName;
             this.StartTime = eventoContract.StartTime;
             this.EndTime = eventoContract.EndTime;
-            this.Participants = new List<ParticipantContract>();
-            eventoContract.Participnats.ToList().ForEach(participant => this.Participants.Add(new ParticipantContract(participant, EventAcceptanceState.Pending)));
-            this.Destination = eventoContract.Destination;
-
+            this.Participants = new List<Participant>();
+            eventoContract.Participnats.ToList().ForEach(participant => this.Participants.Add(new Participant(participant, EventAcceptanceState.Pending)));
+            this.Destination = JsonConvert.DeserializeObject<Location>(JsonConvert.SerializeObject(eventoContract.Destination));
+            this.Duration = JsonConvert.DeserializeObject<Duration>(JsonConvert.SerializeObject(eventoContract.Duration));
+            this.Tracking = JsonConvert.DeserializeObject<Duration>(JsonConvert.SerializeObject(eventoContract.Tracking));
+            this.Reminder = JsonConvert.DeserializeObject<Reminder>(JsonConvert.SerializeObject(eventoContract.Reminder));
+            this.EventState = eventoContract.EventState;
         }
 
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
-        public EventType EventType { get; set; }
+        public EventType EventType { get; private set; }
 
-        public string Description { get; set; }
+        public string Description { get; private set; }
 
-        public Guid InitiatorId { get; set; }
+        public Guid InitiatorId { get; private set; }
+        public string InitiatorName { get; private set; }
+        public EventState EventState { get; private set; }
 
-        public EventState EventState { get; set; }
+        public DateTime StartTime { get; private set; }
 
-        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; private set; }
 
-        public DateTime EndTime { get; set; }
+        public Location Destination { get; private set; }
 
-        public LocationContract Destination { get; set; }
+        public List<Participant> Participants { get; private set; }
 
-        public List<ParticipantContract> Participants { get; set; }
+        public Recurrence Recurrence { get; private set; }
 
-        public RecurrenceContract Recurrence { get; set; }
+        public Duration Duration { get; private set; }
+
+        public Reminder Reminder { get; private set; }
+
+        public Duration Tracking { get; private set; }
 
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Evento.DataContract
 {
-    public class ParticipantContract
+    public class Participant
     {
-        public ParticipantContract(Guid userID, EventAcceptanceState acceptanceState)
+        public Participant(Guid userID, EventAcceptanceState acceptanceState)
         {
             this.AcceptanceState = acceptanceState;
             this.UserId = userID;

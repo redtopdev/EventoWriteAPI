@@ -19,8 +19,9 @@ namespace Evento.Service
         [HttpPost(Routes.Evento)]
         public async Task<IActionResult> CreateEventAsync([FromBody]EventoContract evento)
         {
-            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new CreateEvento(Guid.NewGuid(), evento));
-            return new StatusCodeResult(StatusCodes.Status201Created);
+            Guid eventId = Guid.NewGuid();
+            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new CreateEvento(eventId, evento));
+            return new ObjectResult(eventId) { StatusCode = StatusCodes.Status201Created };           
         }
 
         [HttpPut(Routes.EndEvento)]

@@ -3,10 +3,10 @@ namespace Evento.DataContract
 {
     public enum EventType
     {
-        GENERAL = 1,        // Meeting with no specific category.
-        GAMES,              //   Meeting up for Sports or Games.
-        PARTY,              //   Meeting up for Party.
-        OFFICIAL          //    Work related meeting.
+        SHAREMYLOACTION = 100,
+        TRACKBUDDY = 200,
+        QUIK = 300,
+        GENERAL = 400
     }
 
     public enum EventState

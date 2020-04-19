@@ -1,39 +1,26 @@
-FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-# Set environment variables
-ENV ASPNETCORE_URLS="http://*:5000"
-ENV ASPNETCORE_ENVIRONMENT="Development"
-
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-stretch-slim AS base
 WORKDIR /app
-EXPOSE 5000
+EXPOSE 80
 EXPOSE 443
 
-FROM microsoft/dotnet:2.1-sdk AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
 WORKDIR /src
-COPY ["Engaze.Evento.API/Engaze.Evento.API.csproj", "Engaze.Evento.API/"]
-COPY ["Engaze.Evento.ApplicationService/Engaze.Evento.ApplicationService.csproj", "Engaze.Evento.ApplicationService/"]
-COPY ["Engaze.Evento.Persistance/Engaze.Evento.Persistance.csproj", "Engaze.Evento.Persistance/"]
-COPY ["Engaze.Evento.Domain/Engaze.Evento.Domain.csproj", "Engaze.Evento.Domain/"]
-COPY ["Engaze.Evento.Contract/Engaze.Evento.Contract.csproj", "Engaze.Evento.Contract/"]
-
-
-# Restore NuGet packages
-RUN dotnet restore "Engaze.Evento.API/Engaze.Evento.API.csproj"
+COPY ["API/Evento.csproj", "API/"]
+COPY ["ApplicationService/ApplicationService.csproj", "ApplicationService/"]
+COPY ["Domain/Domain.csproj", "Domain/"]
+COPY ["DataContract/DataContract.csproj", "DataContract/"]
+COPY ["Persistance/DataPersistance.csproj", "Persistance/"]
+RUN dotnet restore "API/Evento.csproj"
 COPY . .
-WORKDIR "/src/Engaze.Evento.API"
-
-# Build
-RUN dotnet build "Engaze.Evento.API.csproj" -c Release -o /app
+WORKDIR "/src/API"
+RUN dotnet build "Evento.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Engaze.Evento.API.csproj" -c Release -o /app
-
-# Open up port
-EXPOSE 5000
+RUN dotnet publish "Evento.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
-
-# Run the app
-ENTRYPOINT ["dotnet", "Engaze.Evento.API.dll"]
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Evento.Service.dll"]

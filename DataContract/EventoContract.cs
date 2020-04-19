@@ -13,15 +13,25 @@ namespace Evento.DataContract
 
         public Guid InitiatorId { get; set; }
 
+        public string InitiatorName { get; set; }
+
         public DateTime StartTime { get; set; }
 
         public DateTime EndTime { get; set; }
 
+        public Duration Duration { get; set; }
+
+        public Duration Tracking { get; set; }
+
+        public EventState EventState { get; set; }
+
         public IEnumerable<Guid> Participnats { get; set; }
 
-        public LocationContract Destination { get; set; }
+        public Location Destination { get; set; }
 
-        public RecurrenceContract Recurrence { get; set; }
+        public Reminder Reminder { get; set; }
+
+        public Recurrence Recurrence { get; set; }
 
     }
 }
