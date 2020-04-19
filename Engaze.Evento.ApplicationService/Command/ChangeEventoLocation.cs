@@ -1,7 +1,7 @@
 ﻿
 using System;
 using Engaze.EventSourcing.Core;
-namespace Engaze.Evento.ApplicationService.Command
+namespace Evento.ApplicationService.Command
 {
     public class ChangeEventoLocation : BaseCommand
     {

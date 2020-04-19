@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Engaze.Evento.Domain.ValueObjects
+namespace Evento.Domain.ValueObjects
 {
     public abstract class ValueObject<T> where T : ValueObject<T>
     {

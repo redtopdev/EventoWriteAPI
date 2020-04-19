@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Engaze.EventSourcing.Core;
 
-namespace Engaze.Evento.Domain.Event
+namespace Evento.Domain.Event
 {
     public class ParticipantsListUpdated : EventBase
     {

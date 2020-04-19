@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Engaze.Evento.ApplicationService.Command
+namespace Evento.ApplicationService.Command
 {
     public class UpdateParticipantList: BaseCommand
     {

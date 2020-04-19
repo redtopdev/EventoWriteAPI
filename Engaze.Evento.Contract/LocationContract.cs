@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Engaze.Evento.Contract
+namespace Evento.DataContract
 {
     public class LocationContract
     {

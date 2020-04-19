@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Engaze.Evento.Contract;
 using Engaze.EventSourcing.Core;
+using Evento.DataContract;
 
-namespace Engaze.Evento.Domain.Event
+namespace Evento.Domain.Event
 {
     public class EventoCreated : EventBase
     {

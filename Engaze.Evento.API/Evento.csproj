@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <UserSecretsId>f4eaabce-3996-4a5f-8452-3486239f19d7</UserSecretsId>
+    <AssemblyName>Evento.Service</AssemblyName>
+    <RootNamespace>Evento.Service</RootNamespace>
   </PropertyGroup>
  
   <ItemGroup>
@@ -14,7 +16,7 @@
   </ItemGroup>
  
   <ItemGroup>
-    <ProjectReference Include="..\Engaze.Evento.ApplicationService\Engaze.Evento.ApplicationService.csproj" />
+    <ProjectReference Include="..\Engaze.Evento.ApplicationService\ApplicationService.csproj" />
   </ItemGroup>
  
   <ItemGroup>

@@ -1,9 +1,9 @@
-﻿using Engaze.Evento.Contract;
+﻿using Evento.DataContract;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Engaze.Evento.Domain.ValueObjects
+namespace Evento.Domain.ValueObjects
 {
     public class Recurrence : ValueObject<Recurrence>
     {

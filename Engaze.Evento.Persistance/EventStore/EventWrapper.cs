@@ -1,6 +1,6 @@
 ﻿using Engaze.EventSourcing.Core;
 
-namespace Engaze.Evento.Persistance
+namespace Evento.DataPersistance
 {
     public class EventWrapper
     {

@@ -1,5 +1,5 @@
-﻿using Engaze.Evento.ApplicationService.Command;
-using Engaze.Evento.Contract;
+﻿using Evento.ApplicationService.Command;
+using Evento.DataContract;
 using Engaze.EventSourcing.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Engaze.Evento.API.Controllers
+namespace Evento.Service
 {
 
     public class ParticipantController : ServiceControllerBase
@@ -29,7 +29,7 @@ namespace Engaze.Evento.API.Controllers
         [HttpPut(Routes.LeaveEvento)]
         public async Task<IActionResult> LeaveEvent([FromRoute]Guid eventId, [FromRoute]Guid participantId)
         {
-            await commandDispatcher.Dispatch<Domain.Entity.Evento>(new LeaveEvento(eventId, participantId));
+            await commandDispatcher.Dispatch<Evento.Domain.Entity.Evento>(new LeaveEvento(eventId, participantId));
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 

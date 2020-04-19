@@ -1,13 +1,12 @@
-﻿using Engaze.Evento.ApplicationService.Command;
-using Engaze.Evento.Contract;
+﻿using Evento.ApplicationService.Command;
+using Evento.DataContract;
 using Engaze.EventSourcing.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Engaze.Evento.API.Controllers
+namespace Evento.Service
 {
 
     public class EventoController : ServiceControllerBase

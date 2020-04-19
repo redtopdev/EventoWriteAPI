@@ -1,5 +1,5 @@
 ﻿
-namespace Engaze.Evento.Contract
+namespace Evento.DataContract
 {
     public enum EventType
     {

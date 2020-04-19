@@ -1,6 +1,6 @@
 ﻿
 
-namespace Engaze.Evento.API
+namespace Evento.Service
 {
     public static class Routes
     {

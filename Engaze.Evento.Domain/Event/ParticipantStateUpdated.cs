@@ -1,8 +1,8 @@
 ﻿using System;
-using Engaze.Evento.Contract;
+using Evento.DataContract;
 using Engaze.EventSourcing.Core;
 
-namespace Engaze.Evento.Domain.Event
+namespace Evento.Domain.Event
 {
     public class ParticipantStateUpdated : EventBase
     {

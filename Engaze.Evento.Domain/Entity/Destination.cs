@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Engaze.Evento.Domain.Entity
+namespace Evento.Domain.Entity
 {
     public class Destination
     {

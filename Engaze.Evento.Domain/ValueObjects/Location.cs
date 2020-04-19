@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace Engaze.Evento.Domain.ValueObjects
+namespace Evento.Domain.ValueObjects
 {
     public class Location : ValueObject<Location>
     {

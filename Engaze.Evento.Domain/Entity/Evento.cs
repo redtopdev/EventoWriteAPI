@@ -1,13 +1,14 @@
 ﻿
-namespace Engaze.Evento.Domain.Entity
+namespace Evento.Domain.Entity
 {
-    using Engaze.Evento.Contract;
-    using Engaze.Evento.Domain.Event;
-    using Engaze.Evento.Domain.ValueObjects;
+   
     using Engaze.EventSourcing.Core;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using global::Evento.Domain.Event;
+    using global::Evento.DataContract;
+    using global::Evento.Domain.ValueObjects;
 
     public class Evento : AggregateRoot
     {

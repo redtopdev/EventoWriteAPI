@@ -1,7 +1,7 @@
 ﻿
-namespace Engaze.Evento.ApplicationService.Command
+namespace Evento.ApplicationService.Command
 {
-    using Engaze.Evento.Contract;
+    using Evento.DataContract;
     using Engaze.EventSourcing.Core;
     using System;
     public class CreateEvento : BaseCommand

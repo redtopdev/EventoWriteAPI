@@ -2,7 +2,7 @@
 using Engaze.EventSourcing.Core;
 using System;
 
-namespace Engaze.Evento.ApplicationService.Command
+namespace Evento.ApplicationService.Command
 {
     public class ExtendEvento : BaseCommand
     {

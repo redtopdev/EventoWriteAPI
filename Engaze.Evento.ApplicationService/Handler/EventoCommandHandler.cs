@@ -1,10 +1,10 @@
 ﻿
-namespace Engaze.Evento.ApplicationService.Handler
+namespace Evento.ApplicationService.Handler
 {
     using Domain.Entity;
-    using Engaze.Evento.ApplicationService.Command;
+    using Evento.ApplicationService.Command;
 
-    using Engaze.Evento.Persistance;
+    using Evento.DataPersistance;
     using Engaze.EventSourcing.Core;
     using System.Threading.Tasks;
 

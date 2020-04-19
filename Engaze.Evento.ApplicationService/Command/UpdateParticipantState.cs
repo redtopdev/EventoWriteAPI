@@ -1,8 +1,8 @@
-﻿using Engaze.Evento.Contract;
+﻿using Evento.DataContract;
 using Engaze.EventSourcing.Core;
 using System;
 
-namespace Engaze.Evento.ApplicationService.Command
+namespace Evento.ApplicationService.Command
 {
     public class UpdateParticipantState : BaseCommand
     {

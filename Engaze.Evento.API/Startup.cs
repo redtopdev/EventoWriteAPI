@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Engaze.Evento.API
+namespace Evento.Service
 {
     public class Startup
     {
@@ -33,7 +33,10 @@ namespace Engaze.Evento.API
                 loggerFactory.AddConsole(LogLevel.Debug);
                 loggerFactory.AddDebug();
             }
-           
+
+            app.UseAppException();
+            app.UseAppStatus();
+
             app.UseMvc();
             conn.ConnectAsync().Wait();
         }

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engaze.Evento.Persistance
+namespace Evento.DataPersistance
 {
     public class EventStoreEventStore : IEventStore
     {

@@ -1,7 +1,7 @@
 ﻿using Engaze.EventSourcing.Core;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Engaze.Evento.API.Controllers
+namespace Evento.Service
 {
     [ApiController]
     public class ServiceControllerBase : ControllerBase

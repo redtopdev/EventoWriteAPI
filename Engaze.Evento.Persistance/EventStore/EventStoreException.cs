@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Engaze.Evento.Persistance
+namespace Evento.DataPersistance
 {
     [Serializable]
     public class EventStoreException : Exception

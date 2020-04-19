@@ -1,7 +1,7 @@
 ﻿using System;
 using Engaze.EventSourcing.Core;
 
-namespace Engaze.Evento.Domain.Event
+namespace Evento.Domain.Event
 {
     public class EventoExtended : EventBase
     {

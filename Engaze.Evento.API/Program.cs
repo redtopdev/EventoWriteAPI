@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
-namespace Engaze.Evento.API
+namespace Evento.Service
 {
     public static class Program
     {

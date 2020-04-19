@@ -1,12 +1,12 @@
-﻿using Engaze.Evento.ApplicationService.Handler;
-using Engaze.Evento.Persistance;
+﻿using Evento.ApplicationService.Handler;
+using Evento.DataPersistance;
 using Engaze.EventSourcing.Core;
 using EventStore.ClientAPI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Engaze.Evento.API
+namespace Evento.Service
 {
     public static class Dependency
     {

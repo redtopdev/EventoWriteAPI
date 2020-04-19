@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Evento.DataContract</AssemblyName>
+    <RootNamespace>Evento.DataContract</RootNamespace>
   </PropertyGroup>
 
 </Project>

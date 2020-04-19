@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Engaze.Evento.Persistance
+namespace Evento.DataPersistance
 {
     public class AggregateRespository<TAggregate> : IAggregateRespository<TAggregate> where TAggregate : class, IEventSourcingAggregate
     {

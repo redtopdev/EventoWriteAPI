@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Engaze.Evento.Persistance
+namespace Evento.DataPersistance
 {
     public interface IAggregateRespository<TAggregate> where TAggregate : IEventSourcingAggregate
     {

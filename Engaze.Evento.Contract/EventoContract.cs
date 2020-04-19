@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Engaze.Evento.Contract
+namespace Evento.DataContract
 {
     public class EventoContract
     {
