@@ -1,7 +1,7 @@
 ﻿
 namespace Evento.Domain.Entity
 {
-   
+
     using Engaze.EventSourcing.Core;
     using System;
     using System.Collections.Generic;
@@ -117,31 +117,33 @@ namespace Evento.Domain.Entity
             this.EndTime = e.EndTime;
             this.EventState = e.EventState;
             this.EventType = e.EventType;
-            this.ParticipantList = new List<Participant>();
-            e.Participants.ToList().ForEach(participant => this.ParticipantList.Add(new Participant(participant.UserId, participant.AcceptanceState)));
-            this.Destination = new ValueObjects.Location()
+
+            if (e.Participants != null)
             {
-                Address = e.Destination.Address,
-                Name = e.Destination.Name,
-                Latitude = e.Destination.Latitude,
-                Longitude = e.Destination.Longitude
-            };
-            if (e.Recurrence != null)
-            {
-                this.EventoRecurrence = new ValueObjects.Recurrence()
-                {
-                    ActualStartTime = e.Recurrence.ActualStartTime,
-                    Count = e.Recurrence.Count,
-                    DaysOfWeek = e.Recurrence.DaysOfWeek,
-                    Frequency = e.Recurrence.Frequency,
-                    FrequencyType = e.Recurrence.FrequencyType,
-                    Remaining = e.Recurrence.Remaining
-                };
+                this.ParticipantList = JsonConvert.DeserializeObject<List<Participant>>(JsonConvert.SerializeObject(e.Participants));
             }
 
-            this.Duration = JsonConvert.DeserializeObject<ValueObjects.Duration>(JsonConvert.SerializeObject(e.Duration));
-            this.Tracking = JsonConvert.DeserializeObject<ValueObjects.Duration>(JsonConvert.SerializeObject(e.Tracking));
-            this.Reminder = JsonConvert.DeserializeObject<ValueObjects.Reminder>(JsonConvert.SerializeObject(e.Reminder));
+            if (e.Destination != null)
+            {
+                this.Destination = JsonConvert.DeserializeObject<ValueObjects.Location>(JsonConvert.SerializeObject(e.Destination));
+            }
+            if (e.Recurrence != null)
+            {
+                this.Recurrence = JsonConvert.DeserializeObject<ValueObjects.Recurrence>(JsonConvert.SerializeObject(e.Recurrence));
+            }
+
+            if (e.Duration != null)
+            {
+                this.Duration = JsonConvert.DeserializeObject<ValueObjects.Duration>(JsonConvert.SerializeObject(e.Duration));
+            }
+            if (e.Tracking != null)
+            {
+                this.Tracking = JsonConvert.DeserializeObject<ValueObjects.Duration>(JsonConvert.SerializeObject(e.Tracking));
+            }
+            if (e.Reminder != null)
+            {
+                this.Reminder = JsonConvert.DeserializeObject<ValueObjects.Reminder>(JsonConvert.SerializeObject(e.Reminder));
+            }
         }
 
 
@@ -165,7 +167,7 @@ namespace Evento.Domain.Entity
 
         public ValueObjects.Location Destination { get; private set; }
 
-        public ValueObjects.Recurrence EventoRecurrence { get; private set; }
+        public ValueObjects.Recurrence Recurrence { get; private set; }
 
         public ValueObjects.Duration Duration { get; set; }
 

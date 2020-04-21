@@ -9,9 +9,6 @@ namespace Evento.Domain.Event
 {
     public class EventoCreated : EventBase
     {
-        public EventoCreated()
-        {
-        }
         public EventoCreated(Guid aggregateId, EventoContract eventoContract) : base(aggregateId)
         {
             this.Name = eventoContract.Name;
@@ -21,12 +18,32 @@ namespace Evento.Domain.Event
             this.InitiatorName = eventoContract.InitiatorName;
             this.StartTime = eventoContract.StartTime;
             this.EndTime = eventoContract.EndTime;
-            this.Participants = new List<Participant>();
-            eventoContract.Participnats.ToList().ForEach(participant => this.Participants.Add(new Participant(participant, EventAcceptanceState.Pending)));
-            this.Destination = JsonConvert.DeserializeObject<Location>(JsonConvert.SerializeObject(eventoContract.Destination));
-            this.Duration = JsonConvert.DeserializeObject<Duration>(JsonConvert.SerializeObject(eventoContract.Duration));
-            this.Tracking = JsonConvert.DeserializeObject<Duration>(JsonConvert.SerializeObject(eventoContract.Tracking));
-            this.Reminder = JsonConvert.DeserializeObject<Reminder>(JsonConvert.SerializeObject(eventoContract.Reminder));
+            if (eventoContract.Participants != null)
+            {
+                this.Participants = new List<Participant>();
+                eventoContract.Participants.ToList().ForEach(participant => this.Participants.Add(new Participant(participant, EventAcceptanceState.Pending)));
+            }
+
+            if (eventoContract.Destination != null)
+            {
+                this.Destination = JsonConvert.DeserializeObject<Location>(JsonConvert.SerializeObject(eventoContract.Destination));
+            }
+            if (eventoContract.Duration != null)
+            {
+                this.Duration = JsonConvert.DeserializeObject<Duration>(JsonConvert.SerializeObject(eventoContract.Duration));
+            }
+            if (eventoContract.Tracking != null)
+            {
+                this.Tracking = JsonConvert.DeserializeObject<Duration>(JsonConvert.SerializeObject(eventoContract.Tracking));
+            }
+            if (eventoContract.Reminder != null)
+            {
+                this.Reminder = JsonConvert.DeserializeObject<Reminder>(JsonConvert.SerializeObject(eventoContract.Reminder));
+            }
+            if (eventoContract.Recurrence != null)
+            {
+                this.Recurrence = JsonConvert.DeserializeObject<Recurrence>(JsonConvert.SerializeObject(eventoContract.Recurrence));
+            }
             this.EventState = eventoContract.EventState;
         }
 
@@ -37,7 +54,9 @@ namespace Evento.Domain.Event
         public string Description { get; private set; }
 
         public Guid InitiatorId { get; private set; }
+
         public string InitiatorName { get; private set; }
+
         public EventState EventState { get; private set; }
 
         public DateTime StartTime { get; private set; }

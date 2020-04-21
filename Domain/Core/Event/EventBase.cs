@@ -12,14 +12,15 @@ namespace Engaze.EventSourcing.Core
         {
             get { return $"{IdAsStringPrefix}{AggregateId.ToString()}"; }
         }
-        protected EventBase()
-        {
-            EventId = Guid.NewGuid();
-        }
+        ////protected EventBase()
+        ////{
+        ////    EventId = AggregateId;
+        ////}
 
-        protected EventBase(Guid aggregateId) : this()
+        protected EventBase(Guid aggregateId) //: this()
         {
             AggregateId = aggregateId;
+            EventId = aggregateId;
         }
 
         protected EventBase(Guid aggregateId, long aggregateVersion) : this(aggregateId)

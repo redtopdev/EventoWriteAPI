@@ -7,6 +7,7 @@ namespace Evento.Domain.Entity
 {
     public class Participant
     {
+        public Participant() { }
         internal Participant(Guid userId, EventAcceptanceState acceptanceState)
         {
             this.UserId = userId;
