@@ -7,12 +7,12 @@ namespace Evento.Domain.Entity
     using System.Collections.Generic;
     using System.Linq;
     using global::Evento.Domain.Event;
-    using global::Evento.DataContract;
     using Newtonsoft.Json;
+    using Engaze.Core.DataContract;
 
     public class Evento : AggregateRoot
     {
-        public Evento(Guid Id, EventoContract eventoContract) : this()
+        public Evento(Guid Id, Event eventoContract) : this()
         {
             var @event = new EventoCreated(Id, eventoContract);
             base.RaiseEvent(@event);

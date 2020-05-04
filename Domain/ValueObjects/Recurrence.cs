@@ -1,7 +1,6 @@
-﻿using Evento.DataContract;
+﻿using Engaze.Core.DataContract;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Evento.Domain.ValueObjects
 {

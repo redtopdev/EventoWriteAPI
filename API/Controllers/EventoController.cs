@@ -1,6 +1,6 @@
-﻿using Evento.ApplicationService.Command;
-using Evento.DataContract;
+﻿using Engaze.Core.DataContract;
 using Engaze.EventSourcing.Core;
+using Evento.ApplicationService.Command;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,7 +17,7 @@ namespace Evento.Service
         }
 
         [HttpPost(Routes.Evento)]
-        public async Task<IActionResult> CreateEventAsync([FromBody]EventoContract evento)
+        public async Task<IActionResult> CreateEventAsync([FromBody]Event evento)
         {
             Guid eventId = Guid.NewGuid();
             await commandDispatcher.Dispatch<Domain.Entity.Evento>(new CreateEvento(eventId, evento));

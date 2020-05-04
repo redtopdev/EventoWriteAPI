@@ -1,5 +1,5 @@
 ﻿
-using Evento.DataContract;
+using Engaze.Core.DataContract;
 using System;
 
 

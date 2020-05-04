@@ -1,6 +1,6 @@
-﻿using Evento.ApplicationService.Command;
-using Evento.DataContract;
+﻿using Engaze.Core.DataContract;
 using Engaze.EventSourcing.Core;
+using Evento.ApplicationService.Command;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;

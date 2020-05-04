@@ -1,10 +1,8 @@
-﻿using EventStore.ClientAPI;
+﻿using Engaze.Core.Web;
+using EventStore.ClientAPI;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Evento.Service
 {
@@ -21,23 +19,23 @@ namespace Evento.Service
         public void ConfigureServices(IServiceCollection services)
         {
             Dependency.Configure(services, Configuration);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IEventStoreConnection conn)
+        public void Configure(IApplicationBuilder app, IEventStoreConnection conn)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                loggerFactory.AddConsole(LogLevel.Debug);
-                loggerFactory.AddDebug();
-            }
+            app.UseRouting();
+
+            //app.UseAuthorization();
 
             app.UseAppException();
             app.UseAppStatus();
 
-            app.UseMvc();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
             conn.ConnectAsync().Wait();
         }
     }

@@ -1,4 +1,4 @@
-﻿using Evento.DataContract;
+﻿using Engaze.Core.DataContract;
 using Engaze.EventSourcing.Core;
 using System;
 

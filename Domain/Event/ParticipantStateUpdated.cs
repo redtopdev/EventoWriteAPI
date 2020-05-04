@@ -1,6 +1,6 @@
 ﻿using System;
-using Evento.DataContract;
 using Engaze.EventSourcing.Core;
+using Engaze.Core.DataContract;
 
 namespace Evento.Domain.Event
 {
